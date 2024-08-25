@@ -4,7 +4,7 @@ import { fetchWeather } from '../services/weatherService';
 import { WeatherData } from '../types/Weather';
 import sunny from './images/sunny.png';
 import rainy from './images/rainy.png';
-import cloudy from './images/cloudy.png'; // Updated image source
+import cloudy from './images/windy.png'; // Updated image source
 import snowy from './images/snowy.png'; // Updated image source
 import defaultWeather from './images/defaultweather.jpg';
 
