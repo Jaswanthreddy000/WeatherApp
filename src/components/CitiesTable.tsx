@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { fetchCities } from '../services/cityService';
 import { City } from '../types/Weather';
 import { Link } from 'react-router-dom';
-import AutoSuggest from "react-autosuggest";
-import bgimage from "./images/websitebg.jpg";
+import AutoSuggest from 'react-autosuggest';
+import bgimage from './images/websitebg.jpg';
 
 const CitiesTable: React.FC = () => {
   const [cities, setCities] = useState<City[]>([]);
@@ -34,7 +34,7 @@ const CitiesTable: React.FC = () => {
       setLoading(false);
     };
     loadCities();
-  }, [page]);
+  }, [page, loading]);
 
   useEffect(() => {
     let filtered = cities.filter(city =>
@@ -151,7 +151,7 @@ const CitiesTable: React.FC = () => {
 
         <select
           value={selectedCountry}
-          onChange={(e) => setSelectedCountry(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedCountry(e.target.value)}
           className="w-full sm:w-auto p-2 border rounded shadow focus:outline-none focus:ring focus:border-blue-300"
         >
           <option value="">All Countries</option>
@@ -162,7 +162,7 @@ const CitiesTable: React.FC = () => {
 
         <select
           value={selectedTimezone}
-          onChange={(e) => setSelectedTimezone(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSelectedTimezone(e.target.value)}
           className="w-full sm:w-auto p-2 border rounded shadow focus:outline-none focus:ring focus:border-blue-300"
         >
           <option value="">All Timezones</option>
@@ -201,7 +201,7 @@ const CitiesTable: React.FC = () => {
               <td className="py-2 px-4 border-2 border-gray-600">
                 <Link 
                   to={`/weather/${city.name}`} 
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
                     if (e.ctrlKey || e.metaKey || e.button === 1) {
                       e.preventDefault();
                       window.open(`/weather/${city.name}`, '_blank');
